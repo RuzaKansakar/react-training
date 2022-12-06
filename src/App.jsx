@@ -1,47 +1,19 @@
-
-import './App.css';
-import Game from"./components/Game";
-import {Link,Outlet,Route, Routes} from "react-router-dom";
+import { useState } from "react";
+import EmojiList from "./components/EmojiList";
+import Header from "./components/Header";
+import SearchBar from "./components/SearchBar";
+import filterEmoji from "./filterEmoji";
 
 export default function App() {
-  return (
-    <div>
-      <nav>
-        <ul>
-        <li><Link to="/">Home</Link></li>
-        <li><Link to="/game">Game</Link></li>
-        </ul>
-        
-        
-      </nav>
-      <Routes>
-        <Route path="/" element={<Home/>} >
-          <Route path="/posts"  element={<Post />}/>
-          <Route path="/game" element={<Game />} />
-        </Route>
-        <Route path="/game" element={<Game />} />
-      </Routes>
-    </div>
-  );
-}
-
-function Home()
-{
+  const intialEmojis = filterEmoji("", 20);
+  const [filteredEmojis, setFilteredEmojis] = useState(intialEmojis);
   return (
     <>
-    <div> Header</div>
-    <div>Sidebar</div>
-    <Outlet />
-    <div>Footer</div>
+      <div>
+        <Header />
+        <SearchBar setEmoji={setFilteredEmojis} />
+        <EmojiList data={filteredEmojis} />
+      </div>
     </>
-  )
+  );
 }
-
-function Post(){
-  return (
-    <div>
-    My posts
-    </div>
-  )
-}
-

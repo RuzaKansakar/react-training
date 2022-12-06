@@ -1,7 +1,19 @@
-export default function Header(props){
-    return (
-        <div className="" style={{backgroundColor: props.bgColor}}>
-            {props.title}
-        </div>
-    );
+export default function Header() {
+  return (
+    <header className="component-header">
+      <img
+        src="//cdn.jsdelivr.net/emojione/assets/png/1f638.png"
+        width="32"
+        height="32"
+        alt=""
+      />
+      Emoji Search
+      <img
+        src="//cdn.jsdelivr.net/emojione/assets/png/1f63a.png"
+        width="32"
+        height="32"
+        alt=""
+      />
+    </header>
+  );
 }
